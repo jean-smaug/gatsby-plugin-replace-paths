@@ -1,24 +1,27 @@
-import validate, { Options } from './utils/validate'
+import validate, { Options } from "./utils/validate";
 
 const onCreatePage = (
   { boundActionCreators: { createPage, deletePage }, page, reporter },
-  { pattern, replacement = '' }: Options
-) =>
-  new Promise(resolve => {
-    const error = validate({ pattern, replacement })
+  options: Options[]
+) => {
+  return new Promise((resolve) => {
+    options.forEach(({ pattern, replacement = "" }) => {
+      const error = validate({ pattern, replacement });
 
-    if ( error ) {
-      reporter.panic(error)
-    }
+      if (error) {
+        reporter.panic(error);
+      }
 
-    const path = page.path.replace(pattern, replacement)
+      const path = page.path.replace(pattern, replacement);
 
-    if ( page.path !== path ) {
-      deletePage(page)
-      createPage({ ...page, path })
-    }
+      if (page.path !== path) {
+        deletePage(page);
+        createPage({ ...page, path });
+      }
 
-    resolve()
-  })
+      resolve();
+    });
+  });
+};
 
-export default onCreatePage
+export default onCreatePage;

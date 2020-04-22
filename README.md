@@ -33,24 +33,20 @@ module.exports = {
           pattern: "/about",
           replacement: "/a-propos",
         },
+        {
+          pattern: /(e)/g,
+          replacement: (_, match) => match.toUpperCase(),
+        },
       ],
     },
   ],
 };
 ```
 
-## Change Log
-
-> [Full Change Log](changelog.md)
-
-### [v1.0.0](https://github.com/wyze/gatsby-plugin-replace-paths/releases/tag/v1.0.0) (2018-05-10)
-
-- [[`2ecb2577b3`](https://github.com/wyze/gatsby-plugin-replace-paths/commit/2ecb2577b3)] - Initial commit (Neil Kistner)
-
 ## License
 
 MIT © [Maxime Blanc](//maximeblanc.fr)
-Fork of MIT © [Neil Kistner](//neilkistner.com)
+Fork of [Neil Kistner](https://github.com/wyze/gatsby-plugin-replace-path)
 
 [npm-image]: https://img.shields.io/npm/v/gatsby-plugin-replace-path.svg?style=flat-square
-[npm-url]: https://npmjs.com/package/gatsby-plugin-replace-path
+[npm-url]: https://npmjs.com/package/gatsby-plugin-replace-paths

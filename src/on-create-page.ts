@@ -2,10 +2,10 @@ import validate, { Options } from "./utils/validate";
 
 const onCreatePage = (
   { boundActionCreators: { createPage, deletePage }, page, reporter },
-  options: Options[]
+  options: { config: Options[] }
 ) => {
   return new Promise((resolve) => {
-    options.forEach(({ pattern, replacement = "" }) => {
+    options.config.forEach(({ pattern, replacement = "" }) => {
       const error = validate({ pattern, replacement });
 
       if (error) {

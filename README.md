@@ -28,16 +28,18 @@ module.exports = {
   plugins: [
     {
       resolve: "gatsby-plugin-replace-paths",
-      options: [
-        {
-          pattern: "/about",
-          replacement: "/a-propos",
-        },
-        {
-          pattern: /(e)/g,
-          replacement: (_, match) => match.toUpperCase(),
-        },
-      ],
+      options: {
+        config: [
+          {
+            pattern: "/about",
+            replacement: "/a-propos",
+          },
+          {
+            pattern: /(e)/g,
+            replacement: (_, match) => match.toUpperCase(),
+          },
+        ],
+      },
     },
   ],
 };
